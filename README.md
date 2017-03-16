@@ -72,15 +72,13 @@ you need to add
 project dependencies in `mix.exs`:
 
 ```
-{:junit_formatter, "~> 0.1.0", only: :test}
+{:junit_formatter, "~> 1.3.0", only: :test}
 ```
 
 To enable the XML report generation you need to configure ExUnit just before you actually start it within your test suite:
 
 ```
-if Enum.member?(System.argv(), "--junit") do
-  ExUnit.configure formatters: [JUnitFormatter, ExUnit.CLIFormatter]
-end
+ExUnit.configure formatters: [JUnitFormatter, ExUnit.CLIFormatter]
 ExUnit.start
 ```
 

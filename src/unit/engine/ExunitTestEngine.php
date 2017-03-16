@@ -67,7 +67,7 @@ final class ExunitTestEngine extends ArcanistUnitTestEngine {
   }
 
   private function buildTestFuture($project, $paths, $junit_file) {
-    $cmd_line = csprintf('cd %s && mix test %Ls --junit',
+    $cmd_line = csprintf('cd %s && mix test %Ls',
       $project, $paths);
 
     return new ExecFuture('%C', $cmd_line);
