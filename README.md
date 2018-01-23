@@ -70,7 +70,7 @@ Now you can run `arc lint`.
 ### Post Elixir v1.6.0
 
 You must use a version after
-[this](https://github.com/tolbrino/arcanist-elixir-support/commit/476c1069f9cb20c9b154eed5c6a9b831e099a856)
+[this](https://github.com/tolbrino/arcanist-elixir-support/commit/5e8b352876019856e15f7d908317eab2f58e8b5e)
 version to get support for Elixir v1.6.0 and later.
 
 You need to tell Arcanist which files it should lint by adding a snippet like the following to your `.arclint`:
