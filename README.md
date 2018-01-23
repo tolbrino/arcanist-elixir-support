@@ -29,7 +29,13 @@ libphutil
 - [Elixir 1.1.1](https://github.com/elixir-lang/elixir/releases) - an older version might work as well, but hasn't been tested
 - [Mix](http://elixir-lang.org/docs/stable/mix/Mix.html) - used for running linting and unit testing
 
-## Linting Setup
+## Linting Setup 
+
+### Pre Elixir v1.6.0
+
+You must use
+[this](https://github.com/tolbrino/arcanist-elixir-support/commit/476c1069f9cb20c9b154eed5c6a9b831e099a856)
+version to get support for Elixir prior to v1.6.0.
 
 In order to be able to run `arc lint` you need to use the Elixir linting
 library [dogma](https://github.com/lpil/dogma). It needs to be installed as
@@ -48,6 +54,32 @@ Finally you need to tell Arcanist which files it should lint by adding a snippet
   "linters": {
     "elixir": {
       "type": "elixirdogma",
+      "include": [
+        "(\\.ex[s]?$)"
+      ],
+      "exclude": [
+        "(^deps/)"
+      ]
+    }
+  }
+}
+```
+
+Now you can run `arc lint`.
+
+### Post Elixir v1.6.0
+
+You must use a version after
+[this](https://github.com/tolbrino/arcanist-elixir-support/commit/476c1069f9cb20c9b154eed5c6a9b831e099a856)
+version to get support for Elixir v1.6.0 and later.
+
+You need to tell Arcanist which files it should lint by adding a snippet like the following to your `.arclint`:
+
+```
+{
+  "linters": {
+    "elixir": {
+      "type": "elixir",
       "include": [
         "(\\.ex[s]?$)"
       ],

@@ -1,31 +1,31 @@
 <?php
 
-final class ArcanistElixirDogmaLinter extends ArcanistExternalLinter {
+final class ArcanistElixirLinter extends ArcanistExternalLinter {
 
   private $projectRootDir = null;
 
   public function getInfoName() {
-    return 'ElixirDogma';
+    return 'Elixir';
   }
 
   public function getInfoURI() {
-    return 'https://github.com/lpil/dogma';
+    return 'https://hexdocs.pm/mix/Mix.Tasks.Format.html';
   }
 
   public function getInfoDescription() {
-    return pht('A code style linter for Elixir, powered by shame.');
+    return pht('Formats Elixir code.');
   }
 
   public function getLinterName() {
-    return 'ELIXIRDOGMA';
+    return 'ELIXIR';
   }
 
   public function getLinterConfigurationName() {
-    return 'elixirdogma';
+    return 'elixir';
   }
   public function getLinterConfigurationOptions() {
     $options = array(
-      'elixirdogma.project-root-dir' => array(
+      'elixir.project-root-dir' => array(
         'type' => 'optional string',
         'help' => pht(
           'Adjust the project root directory in which mix is executed.'.
@@ -44,7 +44,7 @@ final class ArcanistElixirDogmaLinter extends ArcanistExternalLinter {
 
   public function setLinterConfigurationValue($key, $value) {
     switch ($key) {
-      case 'elixirdogma.project-root-dir':
+      case 'elixir.project-root-dir':
         $this->setProjectRootDir($value);
         return;
     }
@@ -64,15 +64,14 @@ final class ArcanistElixirDogmaLinter extends ArcanistExternalLinter {
       $flags[] = '&&';
       $flags[] = 'mix';
     }
-    $flags[] = 'dogma';
-    $flags[] = '--format=flycheck';
+    $flags[] = 'format';
+    $flags[] = '--check-formatted';
     return $flags;
   }
 
   public function getInstallInstructions() {
     return pht(
-      'Install dogma by adding it as a dependency to your deps and
-      executing mix deps.get');
+      'Install Elixir at least v1.6.0 to use this linter.');
   }
 
   public function shouldExpectCommandErrors() {
